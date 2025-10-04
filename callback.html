@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>eBay OAuth Callback</title>
+<h1>eBay OAuth Callback</h1><pre id=out>Waiting…</pre>
+<script>
+ const p=new URLSearchParams(location.search);
+ document.getElementById('out').textContent=
+  'code: '+(p.get('code')||'(none)')+'\nstate: '+(p.get('state')||'(none)');
+</script>
