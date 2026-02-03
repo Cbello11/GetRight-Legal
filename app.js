@@ -117,12 +117,12 @@ async function generateListing() {
   }
 }
 
-async function approveListing() {
+async function saveDraftToEbay() {
   if (!state.listing) {
     return;
   }
 
-  setStatus("Submitting…", "loading");
+  setStatus("Saving draft…", "loading");
   approvalMessage.hidden = true;
 
   const payload = {
@@ -136,7 +136,7 @@ async function approveListing() {
   };
 
   try {
-    const response = await fetch("/api/listings/approve", {
+    const response = await fetch("/api/listings/save-draft", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -149,12 +149,12 @@ async function approveListing() {
     const result = await response.json();
     approvalMessage.hidden = false;
     approvalMessage.textContent =
-      result.message || "Listing approved and sent to eBay for publishing.";
-    setStatus("Approved", "ready");
+      result.message || "Draft saved to eBay. You can finalize and publish it there.";
+    setStatus("Draft saved", "ready");
   } catch (error) {
     approvalMessage.hidden = false;
     approvalMessage.textContent =
-      "Approval failed. Connect the backend endpoint at /api/listings/approve to publish.";
+      "Draft save failed. Connect the backend endpoint at /api/listings/save-draft to save in eBay.";
     setStatus("Needs setup", "warning");
   }
 }
@@ -179,5 +179,5 @@ loadDemoButton.addEventListener("click", () => {
   setStatus("Demo ready", "ready");
 });
 
-approveButton.addEventListener("click", approveListing);
+approveButton.addEventListener("click", saveDraftToEbay);
 regenerateButton.addEventListener("click", generateListing);

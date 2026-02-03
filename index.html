@@ -13,7 +13,8 @@
           <p class="eyebrow">GetRight Legal</p>
           <h1>Photo-to-eBay Listing Builder</h1>
           <p class="subtitle">
-            Upload your photos and key details, then review the AI-generated listing before approval.
+            Upload your photos and key details, then review the AI-generated listing before saving the
+            draft to eBay.
           </p>
         </div>
         <div class="status-pill" id="status-pill">Ready</div>
@@ -79,11 +80,12 @@
         </div>
         <p class="section-help" id="generate-help">
           The listing generator sends your photos and details to OpenAI, then returns a draft for review.
+          Saving the draft to eBay requires OAuth access to your eBay account.
         </p>
       </section>
 
       <section class="card" id="review-card" hidden>
-        <h2>3) Review and approve</h2>
+        <h2>3) Review and save draft to eBay</h2>
         <div class="review-grid">
           <div>
             <label>
@@ -108,13 +110,13 @@
             <ul id="review-specifics" class="specifics"></ul>
             <h3>What happens next</h3>
             <p class="section-help">
-              Approving will send the listing to eBay. If you need changes, edit the fields or
-              regenerate.
+              Saving will create an eBay draft in your account. If you need changes, edit the fields
+              or regenerate.
             </p>
           </div>
         </div>
         <div class="actions">
-          <button id="approve" class="primary">Approve listing</button>
+          <button id="approve" class="primary">Save draft to eBay</button>
           <button id="regenerate" class="ghost" type="button">Regenerate</button>
         </div>
         <div id="approval-message" class="notice" hidden></div>
