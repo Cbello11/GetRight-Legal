@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GetRight Legal - eBay Listing Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div>
+          <p class="eyebrow">GetRight Legal</p>
+          <h1>Photo-to-eBay Listing Builder</h1>
+          <p class="subtitle">
+            Upload your photos and key details, then review the AI-generated listing before approval.
+          </p>
+        </div>
+        <div class="status-pill" id="status-pill">Ready</div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card">
+        <h2>1) Capture or upload item photos</h2>
+        <p class="section-help">
+          Take clear photos of the front, back, labels, and any flaws. You can add multiple images.
+        </p>
+        <label class="upload-area" for="photo-input">
+          <input
+            id="photo-input"
+            type="file"
+            accept="image/*"
+            capture="environment"
+            multiple
+          />
+          <span>Tap to add photos</span>
+          <small>JPEG or PNG • multiple files allowed</small>
+        </label>
+        <div class="photo-grid" id="photo-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>2) Provide listing details</h2>
+        <div class="form-grid">
+          <label>
+            Brand
+            <input id="brand" type="text" placeholder="e.g., Mildred's of Hawaii" />
+          </label>
+          <label>
+            Size
+            <input id="size" type="text" placeholder="e.g., 12" />
+          </label>
+          <label>
+            Category
+            <input id="category" type="text" placeholder="e.g., Women's Dresses" />
+          </label>
+          <label>
+            Condition
+            <select id="condition">
+              <option value="">Select condition</option>
+              <option>New with tags</option>
+              <option>New without tags</option>
+              <option>Pre-owned</option>
+            </select>
+          </label>
+          <label class="full">
+            Notes for the AI
+            <textarea
+              id="notes"
+              rows="3"
+              placeholder="Share any flaws, measurements, or selling points to include."
+            ></textarea>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="generate" class="primary">Generate listing</button>
+          <button id="load-demo" class="ghost" type="button">Load demo listing</button>
+        </div>
+        <p class="section-help" id="generate-help">
+          The listing generator sends your photos and details to OpenAI, then returns a draft for review.
+        </p>
+      </section>
+
+      <section class="card" id="review-card" hidden>
+        <h2>3) Review and approve</h2>
+        <div class="review-grid">
+          <div>
+            <label>
+              Title
+              <input id="review-title" type="text" />
+            </label>
+            <label>
+              Suggested price
+              <input id="review-price" type="text" />
+            </label>
+            <label>
+              Key SEO keywords
+              <input id="review-keywords" type="text" />
+            </label>
+            <label>
+              Description
+              <textarea id="review-description" rows="8"></textarea>
+            </label>
+          </div>
+          <div>
+            <h3>Item specifics</h3>
+            <ul id="review-specifics" class="specifics"></ul>
+            <h3>What happens next</h3>
+            <p class="section-help">
+              Approving will send the listing to eBay. If you need changes, edit the fields or
+              regenerate.
+            </p>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="approve" class="primary">Approve listing</button>
+          <button id="regenerate" class="ghost" type="button">Regenerate</button>
+        </div>
+        <div id="approval-message" class="notice" hidden></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>Need help? Contact support to connect your OpenAI + eBay credentials.</p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
